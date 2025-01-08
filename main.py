@@ -32,19 +32,20 @@ from sklearn.model_selection import train_test_split
 X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 
-# Initialize and train a RandomForestClassifier
-rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42) # You can adjust n_estimators
-rf_classifier.fit(X_train, y_train)
+# Initialize and train the Decision Tree Classifier
+clf = DecisionTreeClassifier(random_state=42) # You can tune hyperparameters here if needed
+clf.fit(X_train, y_train)
 
 # Make predictions on the validation set
-y_pred = rf_classifier.predict(X_val)
+y_pred = clf.predict(X_val)
 
-from sklearn.metrics import accuracy_score
+# Evaluate the model
 accuracy = accuracy_score(y_val, y_pred)
-print(f"Accuracy: {accuracy}"
+print(f"Validation Accuracy: {accuracy}")
+
 
 import joblib
 
