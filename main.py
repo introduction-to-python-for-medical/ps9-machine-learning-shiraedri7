@@ -4,14 +4,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import joblib
 import yaml
 
 # Load the dataset
 df = pd.read_csv('parkinsons.csv')
-df.head()
 
 # Select features
 X = df[['PPE', 'RPDE']]
@@ -29,8 +28,8 @@ X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 # Split the data into training and validation sets
 X_train, X_val, y_train, y_val = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# Initialize and train the Decision Tree Classifier
-clf = DecisionTreeClassifier(random_state=42)  # You can tune hyperparameters here if needed
+# Initialize and train the Random Forest Classifier
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
 clf.fit(X_train, y_train)
 
 # Make predictions on the validation set
@@ -46,7 +45,7 @@ joblib.dump(clf, model_filename)
 
 # Define the configuration
 config = {
-    'selected_features': ['PPE', 'RPDE'],
+    'features': ['PPE', 'RPDE'],  # Updated key name
     'path': 'parkinsons_model.joblib'
 }
 
