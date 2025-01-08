@@ -1,2 +1,16 @@
 path: "path_to_model.joblib
 features: ['feature_A', 'feature_B']
+
+
+
+import yaml
+
+# Define the configuration
+config = {
+    'selected_features': ['PPE', 'RPDE'],
+    'path': 'parkinsons_model.joblib'
+}
+
+# Write the configuration to a YAML file
+with open('config.yaml', 'w') as file:
+    yaml.dump(config, file)
