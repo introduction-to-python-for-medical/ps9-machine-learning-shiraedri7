@@ -7,7 +7,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import joblib
-import yaml
 
 # Load the dataset
 df = pd.read_csv('parkinsons.csv')
@@ -42,13 +41,3 @@ print(f"Validation Accuracy: {accuracy}")
 # Save the model
 model_filename = 'parkinsons_model.joblib'
 joblib.dump(clf, model_filename)
-
-# Define the configuration
-config = {
-    'features': ['PPE', 'RPDE'],  # Updated key name
-    'path': 'parkinsons_model.joblib'
-}
-
-# Write the configuration to a YAML file
-with open('config.yaml', 'w') as file:
-    yaml.dump(config, file)
