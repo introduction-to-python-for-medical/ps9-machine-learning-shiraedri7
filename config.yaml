@@ -1,2 +1,2 @@
 features: ['PPE', 'RPDE']
-path: 'parkinsons_model.joblib'
+path: "parkinsons_model.joblib"
